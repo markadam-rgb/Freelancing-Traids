@@ -15,7 +15,7 @@ export function Services() {
               <br className="hidden sm:block" /> a product worth using
             </>
           }
-          description="Three senior designers covering the full product journey — from first research interview to the final shipped pixel."
+          description="Four senior designers covering the full product journey — from first research interview to the final shipped pixel."
         />
 
         <div className="mt-16 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">

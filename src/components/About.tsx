@@ -8,11 +8,11 @@ export function About() {
       <div className="mx-auto max-w-7xl container-px">
         <SectionHeading
           eyebrow="About us"
-          title="Three friends. One studio. Zero hand-offs."
+          title="Four friends. One studio. Zero hand-offs."
           description="We met years ago designing under the same roof and never stopped collaborating. Triad Studio is small on purpose — you work directly with the people doing the work."
         />
 
-        <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {team.map((member, i) => (
             <Reveal key={member.name} delay={i * 0.08}>
               <article className="group h-full overflow-hidden rounded-2xl border border-white/10 bg-ink-card/60 p-7 text-center transition-colors hover:border-brand-400/40">
