@@ -40,7 +40,7 @@ export function Hero() {
             transition={{ duration: 0.7, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
             className="mx-auto mt-6 max-w-xl text-lg text-fog-200"
           >
-            Triad Studio is a tight-knit team of three senior designers turning
+            Triad Studio is a tight-knit team of four senior designers turning
             complex ideas into intuitive, beautiful and high-converting digital
             experiences.
           </motion.p>

@@ -1,6 +1,6 @@
 export const studio = {
   name: 'Triad Studio',
-  tagline: 'A three-person UI/UX design studio.',
+  tagline: 'A four-person UI/UX design studio.',
   email: 'hello@triadstudio.design',
   location: 'Remote · Working worldwide',
 }
@@ -17,7 +17,7 @@ export const stats = [
   { value: '60+', label: 'Products shipped' },
   { value: '12', label: 'Industries served' },
   { value: '4.9/5', label: 'Average client rating' },
-  { value: '3', label: 'Senior designers, zero hand-offs' },
+  { value: '4', label: 'Senior designers, zero hand-offs' },
 ]
 
 export const clients = [
@@ -156,7 +156,7 @@ export const process: Step[] = [
     no: '01',
     title: 'Discover',
     description:
-      'We dig into your goals, users and constraints — aligning the three of us and your team on what success looks like.',
+      'We dig into your goals, users and constraints — aligning the four of us and your team on what success looks like.',
   },
   {
     no: '02',
@@ -189,10 +189,10 @@ export type Member = {
 
 export const team: Member[] = [
   {
-    name: 'Maya Okafor',
+    name: 'Jeshwanth Varma',
     role: 'UX Research & Strategy',
-    bio: 'Turns messy problems into clear plans. Ten years untangling complex flows for fintech and health products.',
-    initials: 'MO',
+    bio: 'Turns messy problems into clear plans, grounding every design decision in real user insight.',
+    initials: 'JV',
     accent: 'from-brand-500 to-brand-700',
     socials: [
       { label: 'LinkedIn', href: '#' },
@@ -200,10 +200,10 @@ export const team: Member[] = [
     ],
   },
   {
-    name: 'Leo Marsh',
+    name: 'Praveen',
     role: 'UI & Visual Design',
     bio: 'Obsessed with type, motion and the last 5% of polish. Believes craft is a competitive advantage.',
-    initials: 'LM',
+    initials: 'PR',
     accent: 'from-coral-500 to-coral-600',
     socials: [
       { label: 'LinkedIn', href: '#' },
@@ -211,14 +211,25 @@ export const team: Member[] = [
     ],
   },
   {
-    name: 'Sofia Reyes',
+    name: 'Nitheish',
     role: 'Product & Design Systems',
     bio: 'Bridges design and engineering. Builds systems that scale and ship without losing their soul.',
-    initials: 'SR',
+    initials: 'NI',
     accent: 'from-brand-600 to-coral-500',
     socials: [
       { label: 'LinkedIn', href: '#' },
       { label: 'GitHub', href: '#' },
+    ],
+  },
+  {
+    name: 'Hariharan',
+    role: 'Prototyping & Interaction',
+    bio: 'Brings ideas to life with clickable prototypes and micro-interactions that feel effortless.',
+    initials: 'HA',
+    accent: 'from-coral-400 to-brand-500',
+    socials: [
+      { label: 'LinkedIn', href: '#' },
+      { label: 'Dribbble', href: '#' },
     ],
   },
 ]
@@ -244,7 +255,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     quote:
-      'Three senior designers, zero hand-off chaos. Communication was effortless and the work was world-class.',
+      'Four senior designers, zero hand-off chaos. Communication was effortless and the work was world-class.',
     name: 'Hannah Cole',
     role: 'Head of Design, Vela Health',
   },
