@@ -4,8 +4,6 @@ A modern, responsive, high-converting landing page for a three-person UI/UX
 design studio. Built to *demonstrate* design quality — the site itself is the
 portfolio piece.
 
-![Triad Studio hero](docs/hero.png)
-
 ## Tech stack
 
 - **Vite** + **React 19** + **TypeScript**
