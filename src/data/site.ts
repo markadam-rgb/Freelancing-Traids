@@ -3,6 +3,8 @@ export const studio = {
   tagline: 'A four-person UI/UX design studio.',
   email: 'hello@triadstudio.design',
   location: 'Remote · Working worldwide',
+  // Web3Forms public access key — safe to expose in client-side code.
+  web3formsKey: '91449eb0-61bd-4a6a-a6fb-78c7650a27f3',
 }
 
 export const navLinks = [

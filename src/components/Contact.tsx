@@ -35,6 +35,8 @@ export function Contact() {
   const [fields, setFields] = useState<Fields>(emptyFields)
   const [errors, setErrors] = useState<Partial<Record<keyof Fields, string>>>({})
   const [submitted, setSubmitted] = useState(false)
+  const [sending, setSending] = useState(false)
+  const [sendError, setSendError] = useState<string | null>(null)
 
   const update = (key: keyof Fields, value: string) => {
     setFields((f) => ({ ...f, [key]: value }))
@@ -52,13 +54,39 @@ export function Contact() {
     return next
   }
 
-  const onSubmit = (e: FormEvent) => {
+  const onSubmit = async (e: FormEvent) => {
     e.preventDefault()
     const next = validate()
     setErrors(next)
-    if (Object.keys(next).length === 0) {
-      // Front-end only demo: no network request is made.
-      setSubmitted(true)
+    if (Object.keys(next).length > 0) return
+
+    setSending(true)
+    setSendError(null)
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          access_key: studio.web3formsKey,
+          subject: `New project enquiry from ${fields.name}`,
+          from_name: fields.name,
+          name: fields.name,
+          email: fields.email,
+          'Project type': fields.projectType,
+          Budget: fields.budget,
+          message: fields.message,
+        }),
+      })
+      const data = await res.json()
+      if (data.success) {
+        setSubmitted(true)
+      } else {
+        setSendError(data.message || 'Something went wrong. Please try again or email us directly.')
+      }
+    } catch {
+      setSendError('Network error. Please try again or email us directly.')
+    } finally {
+      setSending(false)
     }
   }
 
@@ -192,17 +220,22 @@ export function Contact() {
 
                 <button
                   type="submit"
-                  className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-brand-500 to-coral-500 px-7 py-3.5 font-semibold text-white shadow-lg shadow-brand-600/25 transition-transform hover:-translate-y-0.5"
+                  disabled={sending}
+                  className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-brand-500 to-coral-500 px-7 py-3.5 font-semibold text-white shadow-lg shadow-brand-600/25 transition-transform hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:translate-y-0"
                 >
-                  Send message
-                  <Icon
-                    name="arrow"
-                    className="h-4 w-4 transition-transform group-hover:translate-x-1"
-                  />
+                  {sending ? 'Sending…' : 'Send message'}
+                  {!sending && (
+                    <Icon
+                      name="arrow"
+                      className="h-4 w-4 transition-transform group-hover:translate-x-1"
+                    />
+                  )}
                 </button>
+                {sendError && (
+                  <p className="text-center text-xs text-coral-400">{sendError}</p>
+                )}
                 <p className="text-center text-xs text-fog-500">
-                  This is a demo form — submissions are handled in the browser
-                  only.
+                  We reply to every enquiry within one business day.
                 </p>
               </form>
             )}
