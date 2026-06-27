@@ -4,12 +4,12 @@ import { Icon } from './Icon'
 
 export function Hero() {
   return (
-    <section id="top" className="relative overflow-hidden pt-32 pb-20 sm:pt-40">
+    <section id="top" className="relative overflow-hidden pt-32 pb-20 sm:pt-40" aria-labelledby="hero-heading">
       {/* background flourishes */}
-      <div className="pointer-events-none absolute inset-0 grid-pattern opacity-60" />
-      <div className="pointer-events-none absolute -top-32 -left-24 h-96 w-96 rounded-full bg-brand-600/30 blur-3xl animate-float-slow" />
-      <div className="pointer-events-none absolute -top-10 right-0 h-80 w-80 rounded-full bg-coral-500/20 blur-3xl animate-float-slow [animation-delay:-6s]" />
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent to-ink" />
+      <div className="pointer-events-none absolute inset-0 grid-pattern opacity-60" aria-hidden="true" />
+      <div className="pointer-events-none absolute -top-32 -left-24 h-96 w-96 rounded-full bg-brand-600/30 blur-3xl animate-float-slow" aria-hidden="true" />
+      <div className="pointer-events-none absolute -top-10 right-0 h-80 w-80 rounded-full bg-coral-500/20 blur-3xl animate-float-slow [animation-delay:-6s]" aria-hidden="true" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent to-ink" aria-hidden="true" />
 
       <div className="relative mx-auto max-w-7xl container-px">
         <div className="mx-auto max-w-3xl text-center">
@@ -19,11 +19,12 @@ export function Hero() {
             transition={{ duration: 0.5 }}
             className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-sm text-fog-200"
           >
-            <span className="h-2 w-2 rounded-full bg-coral-500" />
+            <span className="h-2 w-2 rounded-full bg-coral-500" aria-hidden="true" />
             Booking projects for Q3 — 2 slots left
           </motion.span>
 
           <motion.h1
+            id="hero-heading"
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
@@ -59,6 +60,7 @@ export function Hero() {
               <Icon
                 name="arrow"
                 className="h-4 w-4 transition-transform group-hover:translate-x-1"
+                aria-hidden="true"
               />
             </a>
             <a
@@ -76,6 +78,8 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
           className="mx-auto mt-16 grid max-w-4xl grid-cols-2 gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/5 lg:grid-cols-4"
+          role="region"
+          aria-label="Key statistics"
         >
           {stats.map((s) => (
             <div key={s.label} className="bg-ink/40 p-6 text-center backdrop-blur">
@@ -88,11 +92,11 @@ export function Hero() {
         </motion.div>
 
         {/* client marquee */}
-        <div className="relative mt-16 overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_12%,black_88%,transparent)]">
-          <p className="mb-6 text-center text-xs font-medium uppercase tracking-[0.2em] text-fog-400">
+        <div className="relative mt-16 overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_12%,black_88%,transparent)]" aria-label="Trusted by teams at">
+          <p id="clients-label" className="mb-6 text-center text-xs font-medium uppercase tracking-[0.2em] text-fog-400">
             Trusted by teams at
           </p>
-          <div className="flex w-max animate-marquee gap-12">
+          <div className="flex w-max animate-marquee gap-12" aria-labelledby="clients-label">
             {[...clients, ...clients].map((c, i) => (
               <span
                 key={`${c}-${i}`}
