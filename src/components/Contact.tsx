@@ -63,19 +63,20 @@ export function Contact() {
     setSending(true)
     setSendError(null)
     try {
+      const body = new FormData()
+      body.append('access_key', studio.web3formsKey)
+      body.append('subject', `New project enquiry from ${fields.name}`)
+      body.append('from_name', fields.name)
+      body.append('name', fields.name)
+      body.append('email', fields.email)
+      body.append('Project type', fields.projectType)
+      body.append('Budget', fields.budget)
+      body.append('message', fields.message)
+
       const res = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify({
-          access_key: studio.web3formsKey,
-          subject: `New project enquiry from ${fields.name}`,
-          from_name: fields.name,
-          name: fields.name,
-          email: fields.email,
-          'Project type': fields.projectType,
-          Budget: fields.budget,
-          message: fields.message,
-        }),
+        headers: { Accept: 'application/json' },
+        body,
       })
       const data = await res.json()
       if (data.success) {
