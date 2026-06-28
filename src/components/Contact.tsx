@@ -67,7 +67,7 @@ export function Contact() {
   }
 
   const inputClass =
-    'w-full rounded-xl border border-white/10 bg-ink/60 px-4 py-3 text-paper placeholder:text-fog-500 outline-none transition-colors focus:border-brand-400 focus:ring-2 focus:ring-brand-500/30 disabled:opacity-50 disabled:cursor-not-allowed'
+    'w-full rounded-xl border border-white/10 bg-ink/60 px-4 py-3 text-paper placeholder:text-fog-500 outline-none transition-all focus:border-brand-400 focus:ring-2 focus:ring-brand-500/30 disabled:opacity-50 disabled:cursor-not-allowed hover:border-white/20'
 
   return (
     <section id="contact" className="relative overflow-hidden py-24 sm:py-32" aria-labelledby="contact-heading">
@@ -94,9 +94,9 @@ export function Contact() {
             <address className="mt-8 space-y-4 text-sm not-italic">
               <a
                 href={`mailto:${studio.email}`}
-                className="flex items-center gap-3 text-fog-200 transition-colors hover:text-paper"
+                className="group flex items-center gap-3 text-fog-200 transition-all hover:text-paper hover:translate-x-1"
               >
-                <span className="grid h-10 w-10 place-items-center rounded-xl bg-white/5 ring-1 ring-inset ring-white/10">
+                <span className="grid h-10 w-10 place-items-center rounded-xl bg-white/5 ring-1 ring-inset ring-white/10 transition-colors group-hover:bg-brand-500/20 group-hover:ring-brand-400/30">
                   <Icon name="mail" className="h-5 w-5 text-brand-300" aria-hidden="true" />
                 </span>
                 {studio.email}
@@ -108,13 +108,31 @@ export function Contact() {
                 {studio.location}
               </div>
             </address>
+            
+            <div className="mt-8 rounded-2xl border border-white/10 bg-gradient-to-br from-brand-500/10 to-coral-500/10 p-6">
+              <h3 className="font-semibold text-paper">Why work with us?</h3>
+              <ul className="mt-3 space-y-2 text-sm text-fog-300">
+                <li className="flex items-start gap-2">
+                  <Icon name="check" className="mt-0.5 h-4 w-4 shrink-0 text-brand-400" aria-hidden="true" />
+                  <span>Direct access to senior designers</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <Icon name="check" className="mt-0.5 h-4 w-4 shrink-0 text-brand-400" aria-hidden="true" />
+                  <span>Transparent weekly updates</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <Icon name="check" className="mt-0.5 h-4 w-4 shrink-0 text-brand-400" aria-hidden="true" />
+                  <span>Measured business outcomes</span>
+                </li>
+              </ul>
+            </div>
           </Reveal>
 
           {/* right: form */}
           <Reveal delay={0.1}>
             {submitted ? (
               <div className="flex h-full flex-col items-center justify-center rounded-2xl border border-brand-400/30 bg-brand-500/10 p-10 text-center" role="status" aria-live="polite">
-                <div className="grid h-14 w-14 place-items-center rounded-full bg-gradient-to-br from-brand-500 to-coral-500 text-white">
+                <div className="grid h-14 w-14 place-items-center rounded-full bg-gradient-to-br from-brand-500 to-coral-500 text-white shadow-lg">
                   <Icon name="check" className="h-7 w-7" aria-hidden="true" />
                 </div>
                 <h3 className="mt-5 text-2xl font-semibold">Message sent!</h3>
@@ -128,7 +146,7 @@ export function Contact() {
                     setFields(emptyFields)
                     setSubmitted(false)
                   }}
-                  className="mt-6 rounded-full border border-white/15 px-5 py-2.5 text-sm font-semibold transition-colors hover:bg-white/5"
+                  className="mt-6 rounded-full border border-white/15 px-5 py-2.5 text-sm font-semibold transition-all hover:bg-white/5 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2 focus:ring-offset-ink"
                 >
                   Send another
                 </button>
@@ -205,7 +223,7 @@ export function Contact() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-brand-500 to-coral-500 px-7 py-3.5 font-semibold text-white shadow-lg shadow-brand-600/25 transition-transform hover:-translate-y-0.5 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0"
+                  className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-brand-500 to-coral-500 px-7 py-3.5 font-semibold text-white shadow-lg shadow-brand-600/25 transition-all hover:-translate-y-0.5 hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2 focus:ring-offset-ink"
                   aria-busy={isSubmitting}
                 >
                   {isSubmitting ? (
